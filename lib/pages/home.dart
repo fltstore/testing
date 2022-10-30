@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class TestingHomePageView extends StatefulWidget {
   const TestingHomePageView({Key? key}) : super(key: key);
@@ -154,26 +155,37 @@ class _TestingHomePageViewState extends State<TestingHomePageView> {
                         const SizedBox(
                           height: 12.0,
                         ),
-                        SizedBox(
-                          width: 66,
-                          child: Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(24.0),
-                              child: Image.asset(
-                                'assets/logo.jpg',
-                                width: 42,
+                        GestureDetector(
+                          onTap: () {
+                            context.push('/entry');
+                          },
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: 66,
+                                child: Center(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(24.0),
+                                    child: Image.asset(
+                                      'assets/logo.jpg',
+                                      width: 42,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 6.0),
-                        const SizedBox(
-                          width: 66,
-                          child: Text(
-                            "湖南居民健康卡",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 10.0,),
-                            overflow: TextOverflow.ellipsis,
+                              const SizedBox(height: 6.0),
+                              const SizedBox(
+                                width: 66,
+                                child: Text(
+                                  "湖南居民健康卡",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 10.0,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
