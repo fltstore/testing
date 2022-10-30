@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import '../extensions/string.dart';
 
 class PointerPageView extends StatefulWidget {
   const PointerPageView({Key? key}) : super(key: key);
@@ -207,8 +208,8 @@ class _PointerPageViewState extends State<PointerPageView> {
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text(
+                                  children: [
+                                    const Text(
                                       "周立齐",
                                       style: TextStyle(
                                         fontSize: 24,
@@ -216,8 +217,8 @@ class _PointerPageViewState extends State<PointerPageView> {
                                       ),
                                     ),
                                     Text(
-                                      "422kjlj444",
-                                      style: TextStyle(
+                                      "4245203432487435".formatToIDCard,
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
                                       ),
