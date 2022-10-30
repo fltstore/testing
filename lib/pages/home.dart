@@ -62,10 +62,7 @@ class _TestingHomePageViewState extends State<TestingHomePageView> {
                   ),
                   Text(
                     "微信(2)",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.0
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 14.0),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -157,13 +154,28 @@ class _TestingHomePageViewState extends State<TestingHomePageView> {
                         const SizedBox(
                           height: 12.0,
                         ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(24.0),
-                          child: Image.asset(
-                            'assets/logo.jpg',
-                            width: 42,
+                        SizedBox(
+                          width: 66,
+                          child: Center(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(24.0),
+                              child: Image.asset(
+                                'assets/logo.jpg',
+                                width: 42,
+                              ),
+                            ),
                           ),
-                        )
+                        ),
+                        const SizedBox(height: 6.0),
+                        const SizedBox(
+                          width: 66,
+                          child: Text(
+                            "湖南居民健康卡",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 10.0,),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ],
                     ),
                   ),
