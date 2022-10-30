@@ -9,4 +9,17 @@ extension StringsFormat on String {
     }
     return tabs.join('');
   }
+
+  String get formatPeople {
+    var data = split('').reversed.toList();
+    String result = '';
+    for (var i = 0; i < data.length; i++) {
+      String output = data[i];
+      if (i % 3 == 0 && i != 0) {
+        output = '$output,';
+      }
+      result = output + result;
+    }
+    return result;
+  }
 }
