@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'pages/home.dart';
+import 'pages/entry_point.dart';
 
 void main() {
   runApp(TestingApp());
@@ -26,7 +26,8 @@ class TestingApp extends StatelessWidget {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return const TestingHomePageView();
+          // return const TestingHomePageView();
+          return const PointerPageView();
         },
       ),
     ],
