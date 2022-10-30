@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:go_router/go_router.dart';
 
+import '../extensions/string.dart';
+
 class PreviewPageView extends StatefulWidget {
   const PreviewPageView({Key? key}) : super(key: key);
 
@@ -24,18 +26,17 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                 ).copyWith(top: 12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "周立齐",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 18.0,
                       ),
                     ),
-                    SizedBox(
-                      height: 4.2,
-                    ),
-                    Text(
+                    const SizedBox(
+                      height: 4.2),
+                    const Text(
                       "证件号码: 11423423",
                       style: TextStyle(
                         color: Color.fromRGBO(101, 101, 101, 1),
@@ -43,8 +44,8 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                       ),
                     ),
                     Text(
-                      "手机号码: 18432424235",
-                      style: TextStyle(
+                      "手机号码: ${'16677777777'.formatPhone}",
+                      style: const TextStyle(
                         color: Color.fromRGBO(101, 101, 101, 1),
                         fontSize: 16.0,
                       ),

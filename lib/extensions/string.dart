@@ -22,4 +22,17 @@ extension StringsFormat on String {
     }
     return result;
   }
+
+  String get formatPhone {
+    if (length <= 10) return this;
+    var tabs = List.generate(length, (index) => '*');
+    for (var i = 0; i < 4; i++) {
+      if (i<= 2) {
+        tabs[i] = this[i];
+      }
+      int offset = i + (tabs.length - 4);
+      tabs[offset] = this[offset];
+    }
+    return tabs.join('');
+  }
 }
