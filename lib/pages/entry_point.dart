@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:go_router/go_router.dart';
 import '../extensions/string.dart';
 
 class PointerPageView extends StatefulWidget {
@@ -183,62 +184,69 @@ class _PointerPageViewState extends State<PointerPageView> {
                     const SizedBox(
                       height: 4.2,
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 200,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/stay/swiper-hunan.png'),
-                          fit: BoxFit.fill,
+                    GestureDetector(
+                      onTap: () {
+                        context.push('/preview');
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/stay/swiper-hunan.png'),
+                            fit: BoxFit.fill,
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 18.0,
-                          vertical: 36.0,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Expanded(child: SizedBox.shrink()),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      "周立齐",
-                                      style: TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 18.0,
+                            vertical: 36.0,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Expanded(child: SizedBox.shrink()),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        "周立齐",
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "4245203432487435".formatToIDCard,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,
+                                      Text(
+                                        "4245203432487435".formatToIDCard,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                QrImage(
-                                  data: "https://github.com/d1y",
-                                  padding: const EdgeInsets.all(2.4),
-                                  backgroundColor: Colors.white,
-                                  foregroundColor:
-                                      const Color.fromRGBO(57, 105, 31, 1),
-                                  version: QrVersions.auto,
-                                  embeddedImage:
-                                      Image.asset('assets/nrhc.png').image,
-                                  size: 90.0,
-                                ),
-                              ],
-                            ),
-                          ],
+                                    ],
+                                  ),
+                                  QrImage(
+                                    data: "https://github.com/d1y",
+                                    padding: const EdgeInsets.all(2.4),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor:
+                                        const Color.fromRGBO(57, 105, 31, 1),
+                                    version: QrVersions.auto,
+                                    embeddedImage:
+                                        Image.asset('assets/nrhc.png').image,
+                                    size: 90.0,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
