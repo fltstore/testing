@@ -217,71 +217,102 @@ class _PreviewPageViewState extends State<PreviewPageView> {
               ),
               const SizedBox(height: 24.0),
               const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18.0,
-                  vertical: 3.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "核酸检测",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 6.0),
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/stay/see.png',
-                          width: 32,
-                          height: 32,
-                          fit: BoxFit.cover,
-                        ),
-                        const Text("点击获取数据"),
-                      ],
-                    ),
-                  ],
-                ),
+              StayItem(
+                title: '核酸检测',
+                onFetchNew: () {},
+                onFetch: () {},
               ),
               const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 18.0,
-                  vertical: 3.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "新冠疫苗",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 6.0),
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/stay/see.png',
-                          width: 32,
-                          height: 32,
-                          fit: BoxFit.cover,
-                        ),
-                        const Text("点击获取数据"),
-                      ],
-                    ),
-                  ],
-                ),
+              StayItem(
+                title: '新冠疫苗',
+                onFetchNew: () {},
+                onFetch: () {},
               ),
               const Divider(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class StayItem extends StatelessWidget {
+  const StayItem({
+    Key? key,
+    required this.title,
+    required this.onFetchNew,
+    required this.onFetch,
+    this.child,
+  }) : super(key: key);
+
+  final String title;
+  final VoidCallback onFetchNew;
+  final VoidCallback onFetch;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 18.0,
+        vertical: 3.0,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              GestureDetector(
+                onTap: onFetchNew,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/stay/download.png',
+                      width: 18,
+                      height: 18,
+                    ),
+                    const SizedBox(width: 2.4),
+                    const Text(
+                      "点击获取最新数据",
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Color(0xff000000),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6.0),
+          Builder(builder: (context) {
+            if (child != null) return child as Widget;
+            return GestureDetector(
+              onTap: onFetch,
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/stay/see.png',
+                    width: 32,
+                    height: 32,
+                    fit: BoxFit.cover,
+                  ),
+                  const Text("点击获取数据"),
+                ],
+              ),
+            );
+          }),
+        ],
       ),
     );
   }
