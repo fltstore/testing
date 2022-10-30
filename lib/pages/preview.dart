@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class PreviewPageView extends StatefulWidget {
   const PreviewPageView({Key? key}) : super(key: key);
@@ -125,12 +126,17 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                     const SizedBox(
                       height: 12.0,
                     ),
-                    const Text(
-                      '2022-10-30 13:27:38',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromRGBO(72, 110, 246, 1),
+                    GestureDetector(
+                      onDoubleTap: () {
+                        context.pop();
+                      },
+                      child: const Text(
+                        '2022-10-30 13:27:38',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(72, 110, 246, 1),
+                        ),
                       ),
                     ),
                   ],
