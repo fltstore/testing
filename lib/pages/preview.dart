@@ -251,7 +251,8 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                                   ),
                                   const SizedBox(width: 4.2),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: const [
                                       Text("阴性"),
                                       Text("小时内"),
@@ -307,6 +308,31 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                 title: '新冠疫苗',
                 onFetchNew: () {},
                 onFetch: () {},
+                child: DefaultTextStyle(
+                  style: const TextStyle(
+                    color: Color.fromRGBO(173, 173, 173, 1),
+                  ),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: const [
+                            SizedBox(
+                              width: 140,
+                              child: Text('1992年02月21日'),
+                            ),
+                            SizedBox(width: 42, child: Text("完成")),
+                            SizedBox(width: 42, child: Text("首针")),
+                            Expanded(
+                              child: Text("(武汉生物)"),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
               const Divider(),
             ],
