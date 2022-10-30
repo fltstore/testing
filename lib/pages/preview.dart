@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,6 +15,53 @@ class PreviewPageView extends StatefulWidget {
 }
 
 class _PreviewPageViewState extends State<PreviewPageView> {
+  bool _rebuild = false;
+
+  late Timer timer;
+  late Timer nowTimer;
+
+  int timeNum = 760;
+
+  String nowTimeWithFormat = '';
+
+  @override
+  void initState() {
+    super.initState();
+    rebuildLoop();
+    rebuildTime();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    timer.cancel();
+    nowTimer.cancel();
+  }
+
+  rebuildLoop() {
+    timer = Timer.periodic(
+      Duration(milliseconds: timeNum),
+      (timer) {
+        _rebuild = !_rebuild;
+        setState(() {});
+      },
+    );
+  }
+
+  rebuildTime() {
+    updateNowTimeWithFormat();
+    nowTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      updateNowTimeWithFormat();
+    });
+  }
+
+  updateNowTimeWithFormat() {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd kk:mm:ss').format(now);
+    nowTimeWithFormat = formattedDate;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +84,7 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                         fontSize: 18.0,
                       ),
                     ),
-                    const SizedBox(
-                      height: 4.2),
+                    const SizedBox(height: 4.2),
                     const Text(
                       "证件号码: 11423423",
                       style: TextStyle(
@@ -54,7 +103,7 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                 ),
               ),
               const SizedBox(
-                height: 12.0,
+                height: 24.0,
               ),
               SizedBox(
                 width: double.infinity,
@@ -62,17 +111,40 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    QrImage(
-                      data: "https://github.com/d1y",
-                      padding: const EdgeInsets.all(2.4),
-                      backgroundColor: Colors.white,
-                      foregroundColor: const Color.fromRGBO(57, 105, 31, 1),
-                      version: QrVersions.auto,
-                      embeddedImage: Image.asset('assets/nrhc.png').image,
-                      size: MediaQuery.of(context).size.width * .5,
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(242, 221, 144, 1),
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: AnimatedScale(
+                        scale: _rebuild ? 1 : .88,
+                        duration: Duration(
+                          milliseconds: timeNum,
+                        ),
+                        child: AnimatedContainer(
+                          duration: Duration(
+                            milliseconds: timeNum,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(_rebuild ? 0 : 12),
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: QrImage(
+                            data: "https://github.com/d1y",
+                            padding: const EdgeInsets.all(2.4),
+                            backgroundColor: Colors.white,
+                            foregroundColor:
+                                const Color.fromRGBO(57, 105, 31, 1),
+                            version: QrVersions.auto,
+                            embeddedImage: Image.asset('assets/nrhc.png').image,
+                            size: MediaQuery.of(context).size.width * .6,
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(
-                      height: 12.0,
+                      height: 24.0,
                     ),
                     RichText(
                       text: const TextSpan(
@@ -131,9 +203,9 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                       onDoubleTap: () {
                         context.pop();
                       },
-                      child: const Text(
-                        '2022-10-30 13:27:38',
-                        style: TextStyle(
+                      child: Text(
+                        nowTimeWithFormat,
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Color.fromRGBO(72, 110, 246, 1),
