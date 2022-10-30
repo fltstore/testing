@@ -221,6 +221,86 @@ class _PreviewPageViewState extends State<PreviewPageView> {
                 title: '核酸检测',
                 onFetchNew: () {},
                 onFetch: () {},
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(239, 249, 242, 1),
+                    borderRadius: BorderRadius.circular(4.2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 8.0,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            DefaultTextStyle(
+                              style: const TextStyle(
+                                color: Color.fromRGBO(67, 151, 78, 1),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    '24',
+                                    style: TextStyle(
+                                      fontSize: 42,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 4.2),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: const [
+                                      Text("阴性"),
+                                      Text("小时内"),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            DefaultTextStyle(
+                              style: const TextStyle(
+                                color: Color.fromRGBO(128, 130, 129, 1),
+                              ),
+                              child: Column(
+                                children: const [Text("湘西"), Text("湘西")],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "Flutter文本组件添加下划线、删除线",
+                              style: TextStyle(
+                                color: Color.fromRGBO(51, 51, 51, 1),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(67, 151, 78, 1),
+                                borderRadius: BorderRadius.circular(2.4),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                              ),
+                              child: const Text(
+                                "更多",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
               const Divider(),
               StayItem(
