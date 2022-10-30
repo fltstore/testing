@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -18,6 +20,29 @@ class _PointerPageViewState extends State<PointerPageView> {
     "处方服务",
     "疫苗接种",
   ];
+
+  int _fuckPeople = 114511;
+
+  String get fuckPeople {
+    return '${_fuckPeople.toString().formatPeople}人';
+  }
+
+  int genRenderInt() {
+    Random random = Random();
+    int randomNumber = random.nextInt(114511 * 10000);
+    return randomNumber;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    beforeHook();
+  }
+
+  beforeHook() {
+    _fuckPeople = genRenderInt();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,20 +77,16 @@ class _PointerPageViewState extends State<PointerPageView> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("103,331,209人"),
-                        SizedBox(
-                          height: 6.0,
-                        ),
-                        Text(
+                      children: [
+                        Text(fuckPeople),
+                        const SizedBox(height: 6.0),
+                        const Text(
                           "正在使用湖南电子健康卡，就医通信一码通",
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
-                        SizedBox(
-                          height: 12.0,
-                        ),
+                        const SizedBox(height: 12.0),
                       ],
                     ),
                   ),
