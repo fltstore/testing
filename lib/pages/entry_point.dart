@@ -32,35 +32,43 @@ class _PointerPageViewState extends State<PointerPageView> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: DefaultTextStyle(
-              style: const TextStyle(
-                fontSize: 24,
-                color: Colors.black,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12.0,
+            child: Stack(
+              children: [
+                const Opacity(
+                  opacity: .0,
+                  child: CupertinoNavigationBarBackButton(),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text("103,331,209人"),
-                    SizedBox(
-                      height: 6.0,
+                DefaultTextStyle(
+                  style: const TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
                     ),
-                    Text(
-                      "正在使用湖南电子健康卡，就医通信一码通",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text("103,331,209人"),
+                        SizedBox(
+                          height: 6.0,
+                        ),
+                        Text(
+                          "正在使用湖南电子健康卡，就医通信一码通",
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12.0,
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: 12.0,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           Padding(
@@ -220,7 +228,8 @@ class _PointerPageViewState extends State<PointerPageView> {
                                   data: "https://github.com/d1y",
                                   padding: const EdgeInsets.all(2.4),
                                   backgroundColor: Colors.white,
-                                  foregroundColor: const Color.fromRGBO(57, 105, 31, 1),
+                                  foregroundColor:
+                                      const Color.fromRGBO(57, 105, 31, 1),
                                   version: QrVersions.auto,
                                   embeddedImage:
                                       Image.asset('assets/nrhc.png').image,
@@ -271,9 +280,12 @@ class _PointerPageViewState extends State<PointerPageView> {
                         fit: BoxFit.cover,
                       ),
                       const SizedBox(height: 4.2),
-                      Text(curr, style: const TextStyle(
-                        fontSize: 14.0,
-                      ),),
+                      Text(
+                        curr,
+                        style: const TextStyle(
+                          fontSize: 14.0,
+                        ),
+                      ),
                     ],
                   );
                 },
