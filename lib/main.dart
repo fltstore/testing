@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:testing/pages/preview.dart';
 
 import 'pages/entry_point.dart';
 
@@ -27,7 +28,8 @@ class TestingApp extends StatelessWidget {
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
           // return const TestingHomePageView();
-          return const PointerPageView();
+          // return const PointerPageView();
+          return const PreviewPageView();
         },
       ),
     ],
