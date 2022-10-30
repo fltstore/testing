@@ -34,6 +34,18 @@ class _TestingHomePageViewState extends State<TestingHomePageView> {
                 fontSize: 14,
               ),
             ),
+            actions: [
+              Opacity(
+                opacity: 0,
+                child: CupertinoButton(
+                  onPressed: () {
+                    
+                  },
+                  padding: EdgeInsets.zero,
+                  child: const Text("设置"),
+                ),
+              ),
+            ],
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(1.0),
               child: Container(
