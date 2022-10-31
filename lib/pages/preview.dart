@@ -203,6 +203,27 @@ class _PreviewPageViewState extends State<PreviewPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: GestureDetector(
+          onTap: () {
+            context.pop();
+          },
+          child: const Icon(
+            CupertinoIcons.clear,
+            color: Colors.black,
+            size: 18,
+          ),
+        ),
+        title: const Text(
+          "电子健康卡二维码",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 14.0,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

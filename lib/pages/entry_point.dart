@@ -59,6 +59,27 @@ class _PointerPageViewState extends State<PointerPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: GestureDetector(
+          onTap: () {
+            context.pop();
+          },
+          child: const Icon(
+            CupertinoIcons.clear,
+            color: Colors.black,
+            size: 18,
+          ),
+        ),
+        title: const Text(
+          "湖南居民健康卡",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 14.0,
+          ),
+        ),
+      ),
       backgroundColor: const Color.fromRGBO(249, 248, 249, 1),
       body: Column(
         children: [
