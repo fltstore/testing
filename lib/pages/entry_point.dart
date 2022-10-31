@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:testing/shared/local_storage.dart';
 import '../extensions/string.dart';
+import '../config/keys.dart' as keys;
 
 class PointerPageView extends StatefulWidget {
   const PointerPageView({Key? key}) : super(key: key);
@@ -23,6 +25,9 @@ class _PointerPageViewState extends State<PointerPageView> {
 
   int _fuckPeople = 114511;
 
+  String _name = '';
+  String _card = '';
+
   String get fuckPeople {
     return '${_fuckPeople.toString().formatPeople}人';
   }
@@ -31,6 +36,12 @@ class _PointerPageViewState extends State<PointerPageView> {
     Random random = Random();
     int randomNumber = random.nextInt(114511 * 10000);
     return randomNumber;
+  }
+
+  loadWithLocal() {
+    _name = localStorage.getItem(keys.kName, '周立齐');
+    _card = localStorage.getItem(keys.kCard, '10086');
+    setState(() {});
   }
 
   @override
@@ -42,6 +53,7 @@ class _PointerPageViewState extends State<PointerPageView> {
   beforeHook() {
     _fuckPeople = genRenderInt();
     setState(() {});
+    loadWithLocal();
   }
 
   @override
@@ -237,15 +249,15 @@ class _PointerPageViewState extends State<PointerPageView> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        "周立齐",
-                                        style: TextStyle(
+                                      Text(
+                                        _name,
+                                        style: const TextStyle(
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                       Text(
-                                        "4245203432487435".formatToIDCard,
+                                        _card.formatToIDCard,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,
