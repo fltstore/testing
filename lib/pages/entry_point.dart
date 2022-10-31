@@ -316,7 +316,6 @@ class _PointerPageViewState extends State<PointerPageView> {
             ),
             child: Container(
               width: double.infinity,
-              height: 80,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -324,34 +323,28 @@ class _PointerPageViewState extends State<PointerPageView> {
               padding: const EdgeInsets.symmetric(
                 vertical: 12.0,
               ),
-              child: GridView.builder(
-                itemCount: tabs.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  // childAspectRatio: 0.75,
-                ),
-                itemBuilder: (context, index) {
-                  var curr = tabs[index];
-                  return Column(
-                    children: [
-                      Image.asset(
-                        "assets/stay/logo/$curr.png",
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(height: 4.2),
-                      Text(
-                        curr,
-                        style: const TextStyle(
-                          fontSize: 14.0,
+              child: Flex(
+                direction: Axis.horizontal,
+                children: tabs.map((e) => Expanded(
+                  flex: 1,
+                  child: Column(
+                      children: [
+                        Image.asset(
+                          "assets/stay/logo/$e.png",
+                          width: 32,
+                          height: 32,
+                          fit: BoxFit.cover,
                         ),
-                      ),
-                    ],
-                  );
-                },
+                        const SizedBox(height: 4.2),
+                        Text(
+                          e,
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                )).toList(),
               ),
             ),
           ),
