@@ -6,8 +6,6 @@ import '../types/index.dart';
 import '../shared/local_storage.dart';
 import '../config/keys.dart' as keys;
 
-import 'dart:async';
-
 class SettingsPageView extends StatefulWidget {
   const SettingsPageView({Key? key}) : super(key: key);
 
