@@ -131,8 +131,11 @@ class _PreviewPageViewState extends State<PreviewPageView> {
 
     ////////////////////////////
     String pullCacheData = localStorage.getItem(keys.kPull1, '');
-    List<DateTime> puller =
-        pullCacheData.split("||").map((e) => DateTime.parse(e)).toList();
+    var list = pullCacheData
+        .split("||")
+        .where((element) => element.isNotEmpty)
+        .toList();
+    List<DateTime> puller = list.map((e) => DateTime.parse(e)).toList();
     pull = puller;
     ////////////////////////////
 

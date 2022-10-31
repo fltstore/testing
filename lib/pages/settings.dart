@@ -39,8 +39,11 @@ class _SettingsPageViewState extends State<SettingsPageView> {
     );
     map[keys.kCodeType] = CodeType.values[int.tryParse(codeType) ?? 0];
     String pullCacheData = localStorage.getItem(keys.kPull1, '');
-    List<DateTime> puller =
-        pullCacheData.split("||").map((e) => DateTime.parse(e)).toList();
+    var list = pullCacheData
+        .split("||")
+        .where((element) => element.isNotEmpty)
+        .toList();
+    List<DateTime> puller = list.map((e) => DateTime.parse(e)).toList();
     if (puller.isNotEmpty) {
       pulls = puller;
       setState(() {});
