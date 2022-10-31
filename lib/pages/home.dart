@@ -39,7 +39,7 @@ class _TestingHomePageViewState extends State<TestingHomePageView> {
                 opacity: 0,
                 child: CupertinoButton(
                   onPressed: () {
-                    
+                    context.push('/settings');
                   },
                   padding: EdgeInsets.zero,
                   child: const Text("设置"),
